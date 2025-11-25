@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getDishes, getDishBySlug } from "@/lib/contentful";
+import { getDishes, getDishBySlug, type DishFields } from "@/lib/contentful";
+import type { Entry } from "contentful";
 import { getReviewsForDish } from "@/lib/reviews";
 
 type Params = {
@@ -11,22 +12,23 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const dishes = await getDishes();
-  return dishes.map((entry: any) => ({
+  return dishes.map((entry: Entry<DishFields>) => ({
     slug: entry.fields.slug,
   }));
 }
 
-export default async function DishPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
-  const { slug } = await params;
+export default async function DishPage({ params }: { params: Params }) {
+  const { slug } = params;
 
   const dish = await getDishBySlug(slug);
   if (!dish) return notFound();
 
-  const { title, description, recipe, skills, imageUrl } = dish.fields as any;
+  const { title, description, recipe, skills, imageUrl } = dish.fields as DishFields;
+
+  const normalizedImageUrl =
+    typeof imageUrl === "string" && imageUrl.startsWith("//")
+      ? `https:${imageUrl}`
+      : imageUrl;
 
   const reviews = await getReviewsForDish(slug);
   const avgRating =
@@ -49,10 +51,10 @@ export default async function DishPage({
       </header>
 
       {/* IMAGE */}
-      {imageUrl && (
+      {normalizedImageUrl && (
         <div className="relative h-64 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
           <Image
-            src={imageUrl}
+            src={normalizedImageUrl}
             alt={title}
             fill
             className="object-cover"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getDishes } from "@/lib/contentful";
+import { getDishes, type DishFields } from "@/lib/contentful";
 
 export const revalidate = 60;
 
@@ -26,8 +26,8 @@ export default async function ProjectsPage() {
 
       {hasDishes && (
         <div className="grid gap-4 md:grid-cols-2">
-          {dishes.map((entry: any) => {
-            const { slug, title, description } = entry.fields;
+          {dishes.map((entry) => {
+            const { slug, title, description } = entry.fields as DishFields;
 
             return (
               <Link

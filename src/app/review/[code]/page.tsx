@@ -1,26 +1,24 @@
 import { notFound } from "next/navigation";
-import { getDishByReviewCode } from "@/lib/contentful";
+import { getDishByReviewCode, type DishFields } from "@/lib/contentful";
 import { ReviewForm } from "./ReviewForm";
 
 type Params = {
   code: string;
 };
 
+export const dynamic = "force-dynamic";
+
 export const revalidate = 0; // always fresh, or increase later
 
-export default async function ReviewPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
-  const { code } = await params;
+export default async function ReviewPage({ params }: { params: Params }) {
+  const { code } = params;
 
   const dish = await getDishByReviewCode(code);
   if (!dish) {
     return notFound();
   }
 
-  const { title, slug } = dish.fields as any;
+  const { title, slug } = dish.fields as DishFields;
 
   return (
     <main className="mx-auto max-w-xl space-y-6 py-10">
