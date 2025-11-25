@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
-import { getDishes, getDishBySlug } from "@/lib/contentful";
+import { getDishes, getDishBySlug, getAssetById } from "@/lib/contentful";
 import { getReviewsForDish } from "@/lib/reviews";
 
 type Params = {
@@ -26,8 +25,31 @@ export default async function DishPage({
   const dish = await getDishBySlug(slug);
   if (!dish) return notFound();
 
-  const { title, description, recipe, skills, imageUrl } = dish.fields as any;
+  const fields = dish.fields as any;
+  const { title, description, recipe, skills, heroImage } = fields;
 
+  // --- IMAGE: resolve heroImage asset ---
+  let img: string | null = null;
+
+  if (heroImage?.sys?.id) {
+    try {
+      const asset = await getAssetById(heroImage.sys.id);
+      const fileUrl = (asset.fields as any)?.file?.url as string | undefined;
+
+      if (fileUrl) {
+        img = fileUrl.startsWith("http") ? fileUrl : `https:${fileUrl}`;
+      }
+
+      console.log("HERO ASSET FIELDS:", asset.fields);
+      console.log("HERO IMAGE URL:", img);
+    } catch (e) {
+      console.error("Error fetching heroImage asset:", e);
+    }
+  } else {
+    console.log("No heroImage set on this dish.");
+  }
+
+  // --- REVIEWS ---
   const reviews = await getReviewsForDish(slug);
   const avgRating =
     reviews.length > 0
@@ -49,13 +71,12 @@ export default async function DishPage({
       </header>
 
       {/* IMAGE */}
-      {imageUrl && (
-        <div className="relative h-64 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
-          <Image
-            src={imageUrl}
+      {img && (
+        <div className="h-64 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
+          <img
+            src={img}
             alt={title}
-            fill
-            className="object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
       )}
@@ -84,7 +105,6 @@ export default async function DishPage({
       <section className="space-y-6 pt-6 border-t border-gray-200 dark:border-gray-800">
         <h2 className="text-xl font-semibold">Guest Reviews</h2>
 
-        {/* Summary */}
         {reviews.length > 0 ? (
           <p className="text-lg font-medium">
             ⭐ {avgRating}{" "}
@@ -98,7 +118,6 @@ export default async function DishPage({
           </p>
         )}
 
-        {/* Review list */}
         <div className="space-y-4">
           {reviews.map((r) => (
             <div

@@ -5,38 +5,38 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 });
 
-// Get all dishes
 export async function getDishes() {
   const res = await client.getEntries({
     content_type: "dish",
     order: ["-fields.title"],
-    include: 2, // 👈 resolve linked assets like heroImage
   });
 
   console.log("DISHES:", res.items.length);
   return res.items;
 }
 
-// Get a single dish by slug
 export async function getDishBySlug(slug: string) {
   const res = await client.getEntries({
     content_type: "dish",
     "fields.slug": slug,
     limit: 1,
-    include: 2, // 👈 important
   });
 
   return res.items[0] ?? null;
 }
 
-// Get dish by secret review code
 export async function getDishByReviewCode(reviewCode: string) {
   const res = await client.getEntries({
     content_type: "dish",
     "fields.reviewCode": reviewCode,
     limit: 1,
-    include: 2, // 👈 important
   });
 
   return res.items[0] ?? null;
+}
+
+// 🔑 new helper for heroImage
+export async function getAssetById(id: string) {
+  const asset = await client.getAsset(id);
+  return asset;
 }
