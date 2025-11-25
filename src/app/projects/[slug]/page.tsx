@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getDishes, getDishBySlug } from "@/lib/contentful";
 
-type Props = {
-  params: { slug: string };
+type Params = {
+  slug: string;
 };
 
 export const revalidate = 60;
@@ -15,12 +15,23 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function DishPage({ params }: Props) {
-  const dish = await getDishBySlug(params.slug);
+export default async function DishPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
 
+  const dish = await getDishBySlug(slug);
   if (!dish) return notFound();
 
   const { title, description, recipe, skills, heroImage } = dish.fields as any;
+
+  console.log("HERO IMAGE FIELDS:", heroImage?.fields); // should now show full asset
+
+  const imageUrl = heroImage?.fields?.file?.url
+    ? "https:" + heroImage.fields.file.url
+    : null;
 
   return (
     <article className="space-y-6">
@@ -33,11 +44,11 @@ export default async function DishPage({ params }: Props) {
         )}
       </header>
 
-      {heroImage && heroImage.fields && (
+      {imageUrl && (
         <div className="relative h-64 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
           <Image
-            src={"https:" + heroImage.fields.file.url}
-            alt={heroImage.fields.title || title}
+            src={imageUrl}
+            alt={heroImage.fields?.title || title}
             fill
             className="object-cover"
           />

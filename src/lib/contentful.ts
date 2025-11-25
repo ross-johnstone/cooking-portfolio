@@ -10,7 +10,9 @@ export async function getDishes() {
   const res = await client.getEntries({
     content_type: "dish",
     order: ["-fields.title"],
+    include: 2, // 👈 resolve linked assets like heroImage
   });
+
   console.log("DISHES:", res.items.length);
   return res.items;
 }
@@ -21,7 +23,9 @@ export async function getDishBySlug(slug: string) {
     content_type: "dish",
     "fields.slug": slug,
     limit: 1,
+    include: 2, // 👈 important
   });
+
   return res.items[0] ?? null;
 }
 
@@ -31,6 +35,8 @@ export async function getDishByReviewCode(reviewCode: string) {
     content_type: "dish",
     "fields.reviewCode": reviewCode,
     limit: 1,
+    include: 2, // 👈 important
   });
+
   return res.items[0] ?? null;
 }
