@@ -32,14 +32,17 @@ export async function POST(request: Request) {
     if (error) {
       console.error("Supabase insert error:", error);
       return NextResponse.json(
-        { error: "Database error" },
+        { error: error.message },
         { status: 500 }
       );
     }
 
     return NextResponse.json({ success: true });
-  } catch (err) {
+  } catch (err: any) {
     console.error("POST /api/reviews error:", err);
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    return NextResponse.json(
+      { error: err?.message || "Invalid request" },
+      { status: 400 }
+    );
   }
 }
