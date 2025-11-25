@@ -39,9 +39,6 @@ export default function ProjectsPage() {
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
               {dish.blurb}
             </p>
-            <p className="mt-2 text-xs text-gray-400">
-              Click to see more details and guest feedback.
-            </p>
           </Link>
         ))}
       </div>
