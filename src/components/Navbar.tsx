@@ -7,7 +7,6 @@ import { ThemeToggle } from "./ThemeToggle";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/cv", label: "CV" },
   { href: "/projects", label: "Dishes" },
 ];
 
@@ -18,7 +17,7 @@ export function Navbar() {
     <header className="border-b border-gray-200 bg-white/70 backdrop-blur
                        dark:border-gray-800 dark:bg-black/70">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <Link href="/" className="font-semibold tracking-tight">
+        <Link href="/" className="font-semibold text-white">
           Her Name Cooks
         </Link>
 
@@ -34,7 +33,7 @@ export function Navbar() {
                       "transition hover:text-black dark:hover:text-white " +
                       (active
                         ? "font-semibold text-black dark:text-white"
-                        : "text-gray-600 dark:text-gray-300")
+                        : "text-gray-800 dark:text-gray-300")
                     }
                   >
                     {link.label}

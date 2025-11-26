@@ -64,7 +64,7 @@ export default async function DishPage({
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
         {skills && (
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-800 dark:text-gray-400">
             Skills: {skills}
           </p>
         )}
@@ -85,7 +85,7 @@ export default async function DishPage({
       {description && (
         <section className="space-y-2">
           <h2 className="text-xl font-semibold">Description</h2>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-gray-800 dark:text-gray-300">
             {typeof description === "string" ? description : ""}
           </p>
         </section>
@@ -95,7 +95,7 @@ export default async function DishPage({
       {recipe && (
         <section className="space-y-2">
           <h2 className="text-xl font-semibold">Recipe / Notes</h2>
-          <p className="whitespace-pre-line text-gray-600 dark:text-gray-300">
+          <p className="whitespace-pre-line text-gray-800 dark:text-gray-300">
             {typeof recipe === "string" ? recipe : ""}
           </p>
         </section>
@@ -108,12 +108,12 @@ export default async function DishPage({
         {reviews.length > 0 ? (
           <p className="text-lg font-medium">
             ⭐ {avgRating}{" "}
-            <span className="text-gray-500 text-sm">
+            <span className="text-gray-800 text-sm">
               ({reviews.length} reviews)
             </span>
           </p>
         ) : (
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
+          <p className="text-gray-800 dark:text-gray-300 text-sm">
             No reviews yet — be the first to leave feedback using the QR code!
           </p>
         )}

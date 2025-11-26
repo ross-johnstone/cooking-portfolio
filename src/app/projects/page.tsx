@@ -12,13 +12,13 @@ export default async function ProjectsPage() {
     <section className="space-y-6">
       <div className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Dishes</h1>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-800 dark:text-gray-300">
           Home-cooked dishes served to real guests. Reviews will appear on each dish.
         </p>
       </div>
 
       {!hasDishes && (
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-gray-800 dark:text-gray-400">
           No dishes found. Check that your Contentful content type ID is correct
           and that you have published Dish entries.
         </p>
@@ -42,7 +42,7 @@ export default async function ProjectsPage() {
                 </h2>
 
                 {description && (
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                  <p className="mt-1 text-sm text-gray-800 dark:text-gray-300">
                     {typeof description === "string" ? description : ""}
                   </p>
                 )}

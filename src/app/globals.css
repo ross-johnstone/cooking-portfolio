@@ -2,8 +2,9 @@
 
 /* default light colours */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* light mode = book page */
+  --background: #f7f1e3;   /* warm cream */
+  --foreground: #201814;   /* soft dark brown/ink */
 }
 
 /* when the .dark class is present on <html> */
@@ -15,13 +16,35 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* use Garamond as the main font */
+  --font-sans: "Garamond", "EB Garamond", "Times New Roman", serif;
+
+  /* keep a sensible mono fallback for code if you ever use it */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+/* 👉 LIGHT MODE: make all grays basically ink */
+:root {
+  --color-gray-300: #201814;
+  --color-gray-400: #201814;
+  --color-gray-500: #201814;
+  --color-gray-600: #201814;
+  --color-gray-700: #201814;
+}
+
+/* 👉 DARK MODE: restore actual gray shades */
+.dark {
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: "Garamond", "EB Garamond", "Times New Roman", serif;
 }

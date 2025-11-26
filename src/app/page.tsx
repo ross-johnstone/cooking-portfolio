@@ -4,13 +4,13 @@ export default function HomePage() {
   return (
     <section className="flex flex-col gap-6 py-10 md:py-16">
       <div className="space-y-4">
-        <p className="text-xs uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">
+        <p className="text-xs uppercase tracking-[0.25em] text-gray-800 dark:text-gray-300">
           Culinary Portfolio
         </p>
         <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
           Home-cooked dishes, rated by real guests.
         </h1>
-        <p className="max-w-xl text-gray-600 dark:text-gray-300">
+        <p className="max-w-xl text-gray-800 dark:text-gray-300">
           I&apos;m [Her Name], an aspiring cook. I invite friends over,
           serve them dinner, and collect honest reviews. This site is my
           culinary CV — the dishes I&apos;ve cooked and what people thought.
@@ -27,14 +27,7 @@ export default function HomePage() {
         >
           View dishes
         </Link>
-        <Link
-          href="/cv"
-          className="rounded-full border border-gray-300 px-5 py-2 text-sm font-medium text-gray-800
-                     hover:border-gray-500
-                     dark:border-gray-700 dark:text-gray-100 dark:hover:border-gray-400"
-        >
-          View CV
-        </Link>
+        {/* CV button removed */}
       </div>
     </section>
   );
