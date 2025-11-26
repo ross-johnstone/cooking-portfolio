@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HomeGallery } from "@/components/HomeGallery";
+import { HomeCarousel } from "@/components/HomeCarousel";
 
 export default function HomePage() {
   return (
@@ -30,8 +30,8 @@ export default function HomePage() {
         </Link>
       </div>
 
-      {/* Rectangular scrollable gallery at the bottom */}
-      <HomeGallery />
+      {/* Proper button-based carousel */}
+      <HomeCarousel />
     </section>
   );
 }
