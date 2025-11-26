@@ -25,13 +25,13 @@ export default async function ReviewPage({
   return (
     <main className="mx-auto max-w-xl space-y-6 py-10">
       <div className="space-y-2">
-        <p className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">
+        <p className="text-xs uppercase tracking-[0.2em] text-gray-800 dark:text-gray-400">
           Guest Review
         </p>
         <h1 className="text-2xl font-semibold tracking-tight">
           Rate: {title}
         </h1>
-        <p className="text-gray-600 dark:text-gray-300 text-sm">
+        <p className="text-gray-800 dark:text-gray-300 text-sm">
           Thanks for coming! Please leave an honest review of this dish. Your
           feedback helps me build my culinary portfolio.
         </p>
