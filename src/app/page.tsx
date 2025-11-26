@@ -20,6 +20,15 @@ export default function HomePage() {
 
       <div className="flex flex-wrap gap-3">
         <Link
+          href="/about"
+          className="rounded-full border border-black bg-black px-5 py-2 text-sm font-medium text-white transition
+                     hover:bg-transparent hover:text-black
+                     dark:border-white dark:bg-white dark:text-black
+                     dark:hover:bg-transparent dark:hover:text-white"
+        >
+          About Me
+        </Link>
+        <Link
           href="/projects"
           className="rounded-full border border-black bg-black px-5 py-2 text-sm font-medium text-white transition
                      hover:bg-transparent hover:text-black
