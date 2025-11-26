@@ -18,7 +18,7 @@ export function Navbar() {
                        dark:border-gray-800 dark:bg-black/70">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link href="/" className="font-semibold text-white">
-          Her Name Cooks
+          Aayan Sharma
         </Link>
 
         <div className="flex items-center gap-4">

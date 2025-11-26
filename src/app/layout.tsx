@@ -3,7 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Her Name Cooks",
+  title: "Aayan Sharma",
   description: "Culinary portfolio and guest-reviewed home cooking.",
 };
 

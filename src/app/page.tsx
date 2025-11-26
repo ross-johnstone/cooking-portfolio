@@ -11,7 +11,7 @@ export default function HomePage() {
           Home-cooked dishes, rated by real guests.
         </h1>
         <p className="max-w-xl text-gray-800 dark:text-gray-300">
-          I&apos;m [Her Name], an aspiring cook. I invite friends over,
+          I&apos;m Aayan Sharma, an aspiring cook. I invite friends over,
           serve them dinner, and collect honest reviews. This site is my
           culinary CV — the dishes I&apos;ve cooked and what people thought.
         </p>
