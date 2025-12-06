@@ -6,14 +6,10 @@ type Params = {
   code: string;
 };
 
-export const revalidate = 0; // always fresh, or increase later
+export const dynamic = "force-dynamic";
 
-export default async function ReviewPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
-  const { code } = await params;
+export default async function ReviewPage({ params }: { params: Params }) {
+  const { code } = params;
 
   const dish = await getDishByReviewCode(code);
   if (!dish) {
@@ -23,21 +19,21 @@ export default async function ReviewPage({
   const { title, slug } = dish.fields as any;
 
   return (
-    <main className="mx-auto max-w-xl space-y-6 py-10">
-      <div className="space-y-2">
-        <p className="text-xs uppercase tracking-[0.2em] text-gray-800 dark:text-gray-400">
-          Guest Review
-        </p>
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Rate: {title}
-        </h1>
-        <p className="text-gray-800 dark:text-gray-300 text-sm">
-          Thanks for coming! Please leave an honest review of this dish. Your
-          feedback helps me build my culinary portfolio.
-        </p>
-      </div>
+    <section className="space-y-4 py-8">
+      <p className="text-xs uppercase tracking-[0.25em] text-gray-700 dark:text-gray-300">
+        Guest Review
+      </p>
+
+      <h1 className="text-3xl font-semibold tracking-tight">
+        Rate: {title}
+      </h1>
+
+      <p className="max-w-xl text-gray-800 dark:text-gray-300">
+        Thanks for coming! Please leave an honest review of this dish. Your
+        feedback helps me build my culinary portfolio.
+      </p>
 
       <ReviewForm dishSlug={slug} reviewCode={code} />
-    </main>
+    </section>
   );
 }
