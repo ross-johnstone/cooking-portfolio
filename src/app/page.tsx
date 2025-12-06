@@ -9,12 +9,12 @@ export default function HomePage() {
           Culinary Portfolio
         </p>
         <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
-          Home-cooked dishes, rated by real guests.
+          food, rated by folks who showed up.
         </h1>
         <p className="max-w-xl text-gray-800 dark:text-gray-300">
-          I&apos;m Aayan Sharma, an aspiring cook. I invite friends over,
-          serve them dinner, and collect honest reviews. This site is my
-          culinary CV — the dishes I&apos;ve cooked and what people thought.
+          I'm Aayan Sharma. I lure friends over with free food and collect honest reviews.
+          <br />
+          <em>No friends were harmed in the making of these meals.</em>
         </p>
       </div>
 

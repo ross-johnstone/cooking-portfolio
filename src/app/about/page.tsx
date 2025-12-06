@@ -26,24 +26,29 @@ export default function AboutPage() {
 
         {/* Text – below image on mobile, left on desktop */}
         <div className="order-2 md:order-1 md:flex-1 space-y-4 text-foreground">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            feugiat, libero sed cursus mattis, augue nisl pharetra dui, non
-            sagittis turpis velit sit amet erat. Integer euismod, mi non
-            vulputate rhoncus, nisi risus fermentum augue, et convallis nibh
-            eros id elit.
+          <p className="italic">
+            "I'm trying out new recipes and coercing my friends to be guinea pigs."
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            sagittis, elit eget tempus faucibus, neque arcu fermentum arcu, sed
-            finibus magna lacus eu lectus. Donec id velit at lorem interdum
-            posuere. Sed viverra, nisl sed dapibus fermentum, urna neque
-            suscipit mi, in gravida lectus ante sit amet turpis.
+            I'm not formally trained, this whole site is just me learning, experimenting,
+            and seeing what happens when I feed people I care about. If you want to try
+            anything yourself, my recipes (plus easy substitutions) are on the dishes page.
+          </p>
+
+          <p className="italic">
+            "I can't guarantee good photos, but I can guarantee good food."
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet
-            urna tincidunt, imperdiet nunc at, pharetra leo. Sed ut risus id
-            eros tincidunt mollis quis sit amet nibh.
+            TThe lighting might betray me,
+            but the flavours won't.
+          </p>
+
+          <p className="italic">
+            "I just want to make a nice experience for my friends."
+          </p>
+          <p>
+            At the end of the day, it's all about good company, good vibes, and hopefully
+            edible outcomes.
           </p>
         </div>
       </div>
