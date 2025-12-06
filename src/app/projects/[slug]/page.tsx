@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import { getDishes, getDishBySlug, getAssetById } from "@/lib/contentful";
 import { getReviewsForDish } from "@/lib/reviews";
 
+export const dynamic = "force-dynamic";
+
+
 type Params = {
   slug: string;
 };
